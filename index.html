@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="search">
+        <input type="text" name="key" placeholder="ФИО"></input>
+        <input type="text" name="key" placeholder="email"></input>
+        <input type="button" name="print" value="Зарегистрироваться" />
+    </form>
+    <div id="printBlock"></div>
+    <script>
+    var keyBox = document.search.key;
+     
+    // обработчик изменения текста
+    function onchange(e){
+        // получаем элемент printBlock
+        var printBlock = document.getElementById("printBlock");
+        // получаем новое значение
+        var val = e.target.value;
+        // установка значения
+        printBlock.textContent = val;
+    }
+    // обработка потери фокуса
+    function onblur(e){
+         
+        // получаем его значение и обрезаем все пробелы
+        var text = keyBox.value.trim();
+        if(text==="")
+            keyBox.style.borderColor = "red";
+        else
+            keyBox.style.borderColor = "green";
+    }
+    // получение фокуса
+    function onfocus(e){
+         
+        // установка цвета границ поля
+        keyBox.style.borderColor = "blue";
+    }
+    keyBox.addEventListener("change", onchange);
+    keyBox.addEventListener("blur", onblur);
+    keyBox.addEventListener("focus", onfocus);
+    </script>
+</body>
+</html>
